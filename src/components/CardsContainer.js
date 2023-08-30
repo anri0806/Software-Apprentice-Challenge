@@ -1,12 +1,14 @@
-import Card from "./Card"; 
+import Card from "./Card";
 
-function CardsContainer() {
-  return (
-    <div>
-      <h1>CardsContainer</h1>
-      <Card />
-    </div>
-  );
+function CardsContainer({ standardizedData }) {
+  const card = standardizedData.map((data) => (
+    <Card
+      key={`${data.campaign} + _ + ${data.creative} + _ + ${data.platform}`}
+      data={data}
+    />
+  ));
+
+  return <div>{card}</div>;
 }
 
 export default CardsContainer;

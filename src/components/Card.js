@@ -1,13 +1,13 @@
-function Card() {
+function Card({ data }) {
+
   return (
-    <div>
-      <h2>Card</h2>
-      <p>Campaign: </p>
-      <p>Adset: </p>
-      <p>Creative: </p>
-      <p>Spend: </p>
-      <p>Impressions: </p>
-      <p>Clicks: </p>
+    <div style={{"backgroundColor": "#FFDDCC", "margin": "10px"}}>
+      <p>Campaign: {data.campaign}</p>
+      <p>Adset: {data.adset}</p>
+      <p>Creative: {data.creative}</p>
+      <p>Spend: {data.spend}</p>
+      <p>Impressions: {data.impressions}</p>
+      <p>Clicks: {data.clicks}</p>
       <p>Results: </p>
     </div>
   );
