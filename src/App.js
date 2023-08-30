@@ -1,20 +1,14 @@
-import { useEffect } from "react";
 import "./App.css";
 import CardsContainer from "./components/CardsContainer";
+import { useStandardizedData } from "./customHooks/useStandardizedData";
 
 function App() {
-
-  useEffect(() => {
-    fetch("http://localhost:3000/fakeDataSet")
-      .then((res) => res.json())
-      .then((fetchedData) => console.log(fetchedData));
-
-  },[]);
+  const standardizedData = useStandardizedData();
 
   return (
     <div className="App">
       <div className="App">
-        <CardsContainer />
+        <CardsContainer/>
       </div>
     </div>
   );
