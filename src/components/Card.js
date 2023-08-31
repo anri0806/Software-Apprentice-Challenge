@@ -8,7 +8,7 @@ function Card({ data }) {
       <p>Spend: {data.spend}</p>
       <p>Impressions: {data.impressions}</p>
       <p>Clicks: {data.clicks}</p>
-      <p>Results: </p>
+      <p>Results: {data.results}</p>
     </div>
   );
 }

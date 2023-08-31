@@ -4,15 +4,12 @@ export function useStandardizedData() {
   const [standardizedData, setStandardizedData] = useState([]);
 
   // Standardize names and merge data from fb, twitter, snapchat
-  // **Add results later
 
   useEffect(() => {
     fetch("http://localhost:3000/fakeDataSet")
       .then((res) => res.json())
       .then((fetchedData) => {
-
-        
-        //// Added platform attribute
+        //// Add platform attribute
 
         const facebookAds = fetchedData.facebook_ads.map((ad) => ({
           ...ad,
@@ -29,14 +26,7 @@ export function useStandardizedData() {
           platform: "snapchat",
         }));
 
-
-
-        const mergedData = [
-          ...facebookAds,
-          ...twitterAds,
-          ...snapchatAds,
-        ];
-
+        const mergedData = [...facebookAds, ...twitterAds, ...snapchatAds];
 
         const standardized = mergedData.map((ad) => {
           return {
@@ -51,10 +41,51 @@ export function useStandardizedData() {
             spend: ad.spend || ad.cost,
             impressions: ad.impressions,
             clicks: ad.clicks || ad.post_clicks,
-            platform: ad.platform
+            platform: ad.platform,
           };
         });
 
+        /// Merge and add up existing ad results
+
+        let mergeDupeGoogleAnalyticResult = [];
+
+        fetchedData.google_analytics.forEach((data) => {
+          let mergedAdInfo = `${data.utm_campaign}, ${data.utm_medium}, ${data.utm_content}`;
+
+          if (
+            Object.keys(mergeDupeGoogleAnalyticResult).includes(mergedAdInfo)
+          ) {
+            mergeDupeGoogleAnalyticResult[mergedAdInfo] += data.results;
+          } else {
+            mergeDupeGoogleAnalyticResult[mergedAdInfo] = data.results;
+          }
+        });
+
+        // Standardized ads info value to allocate GA results thoroughly
+        // adset -> remove squad, creative -> remove vacation, deal
+
+        standardized.forEach((data) => {
+          let adsInfo = `${data.campaign}, ${
+            data.adset.includes("Ads Squad")
+              ? data.adset.replace(" Squad", "")
+              : data.adset || data.adset.includes("Squad")
+              ? data.adset.replace("Squad", "Ads")
+              : data.adset
+          }, ${
+            data.creative.includes("Vacation")
+              ? data.creative.replace(" Vacation", "")
+              : data.creative && data.creative.includes("Deals")
+              ? data.creative
+              : data.creative.replace(" Deal", "")
+          }`;
+
+
+          if (Object.keys(mergeDupeGoogleAnalyticResult).includes(adsInfo)) {
+            data["results"] = mergeDupeGoogleAnalyticResult[adsInfo];
+          } else {
+            data["results"] = "N/A";
+          }
+        });
 
         setStandardizedData(standardized);
       });
