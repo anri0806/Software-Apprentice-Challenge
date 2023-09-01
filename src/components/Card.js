@@ -1,8 +1,8 @@
 function Card({ data }) {
   return (
-    <div className="rounded-xl shadow-lg">
+    <div className="m-2 rounded-xl shadow-lg">
       <div className=" flex flex-col">
-        <div className="p-7 rounded-xl overflow-hidden">
+        <div className=" p-7 rounded-xl overflow-hidden">
           <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded font-semibold tracking-wide text-xs">
             Campaign
           </span>
