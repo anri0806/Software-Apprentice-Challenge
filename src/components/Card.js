@@ -25,7 +25,7 @@ function Card({ data }) {
           </div>
 
           <div className="text-slate-500 text-lg t-3">
-            <p className="font-medium">{data.campaign}</p>
+            <p className="font-medium mb-2 mt-1">{data.campaign}</p>
             <p className="text-base">Adset: {data.adset}</p>
             <p className="text-base">Creative: {data.creative}</p>
             <div className="card-icons">
