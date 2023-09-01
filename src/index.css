@@ -49,3 +49,7 @@ code {
 .card-icons span {
   font-size: 16px;
 }
+
+.card-social-media-logo {
+  float: right;
+}

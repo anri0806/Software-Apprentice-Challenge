@@ -9,8 +9,6 @@ export function useStandardizedData() {
     fetch("http://localhost:3000/fakeDataSet")
       .then((res) => res.json())
       .then((fetchedData) => {
-        //// Add platform attribute
-
         const facebookAds = fetchedData.facebook_ads.map((ad) => ({
           ...ad,
           platform: "facebook",
@@ -78,7 +76,6 @@ export function useStandardizedData() {
               ? data.creative
               : data.creative.replace(" Deal", "")
           }`;
-
 
           if (Object.keys(mergeDupeGoogleAnalyticResult).includes(adsInfo)) {
             data["results"] = mergeDupeGoogleAnalyticResult[adsInfo];
