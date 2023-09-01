@@ -44,7 +44,7 @@ export function useStandardizedData() {
         });
 
 
-        //// Merge and add up existing ad results
+        //// Merge and add up existing GA results
         let mergeDupeGoogleAnalyticResult = [];
 
         fetchedData.google_analytics.forEach((data) => {
