@@ -34,6 +34,3 @@ function Search({ search, onChangeSearch }) {
 }
 
 export default Search;
-
-// search dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-// span dark:text-neutral-200"

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 export function useStandardizedData() {
   const [standardizedData, setStandardizedData] = useState([]);
 
-  // Standardize names and merge data from fb, twitter, snapchat
 
+  //// Standardize names and merge data from fb, twitter, snapchat
   useEffect(() => {
     fetch("http://localhost:3000/fakeDataSet")
       .then((res) => res.json())
@@ -43,8 +43,8 @@ export function useStandardizedData() {
           };
         });
 
-        /// Merge and add up existing ad results
 
+        //// Merge and add up existing ad results
         let mergeDupeGoogleAnalyticResult = [];
 
         fetchedData.google_analytics.forEach((data) => {
@@ -59,9 +59,8 @@ export function useStandardizedData() {
           }
         });
 
-        // Standardized ads info value to allocate GA results thoroughly
-        // adset -> remove squad, creative -> remove vacation, deal
 
+        // Standardized ads info value to allocate GA results thoroughly
         standardized.forEach((data) => {
           let adsInfo = `${data.campaign}, ${
             data.adset.includes("Ads Squad")
