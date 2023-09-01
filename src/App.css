@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+
+.app-container {
+  margin: 5vh 12vh;
 }
 
 .App-logo {

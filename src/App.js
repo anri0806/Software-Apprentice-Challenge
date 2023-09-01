@@ -27,14 +27,35 @@ function App() {
       return standardizedData;
     })
     .filter((list) => {
-      return list.campaign.toLowerCase().includes(search.toLowerCase())
+      return list.campaign.toLowerCase().includes(search.toLowerCase());
     });
 
   return (
     <div className="App">
-      <Search search={search} onChangeSearch={(item) => setSearch(item)} />
-      <Sort sort={sort} onChangeSort={(value) => setSort(value)} />
-      <CardsContainer standardizedData={sortedList} />
+      <div className="app-container">
+        <Search search={search} onChangeSearch={(item) => setSearch(item)} />
+        <Sort sort={sort} onChangeSort={(value) => setSort(value)} />
+        <div className="icons-list">
+          <p>
+            <span className="align-middle material-icons">paid</span> Spend
+          </p>
+          <p>
+            <span className="align-middle material-icons">
+              volunteer_activism
+            </span>{" "}
+            Impressions
+          </p>
+          <p>
+            <span className="align-middle material-icons">ads_click</span>{" "}
+            Clicks
+          </p>
+          <p>
+            <span className="align-middle material-icons">fact_check</span>{" "}
+            Results
+          </p>
+        </div>
+        <CardsContainer standardizedData={sortedList} />
+      </div>
     </div>
   );
 }
