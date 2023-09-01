@@ -16,14 +16,12 @@ code {
     monospace;
 }
 
-#search-input {
-  display: inline-block;
-}
 
 #basic-addon2 {
   display: inline-block;
   vertical-align: middle;
 }
+
 .align-sort-icon-list {
   display: flex;
   justify-content: space-between;

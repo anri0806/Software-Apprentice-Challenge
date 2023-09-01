@@ -5,7 +5,7 @@ import "./App.css";
 
 import CardsContainer from "./components/CardsContainer";
 import Sort from "./components/Sort";
-import Search from "./components/Search";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [sort, setSort] = useState("All");
@@ -32,8 +32,8 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar search={search} onChangeSearch={(item) => setSearch(item)} />
       <div className="app-container">
-        <Search search={search} onChangeSearch={(item) => setSearch(item)} />
         <div className="align-sort-icon-list">
           <Sort sort={sort} onChangeSort={(value) => setSort(value)} />
           <div className="icons-list">

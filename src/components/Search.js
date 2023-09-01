@@ -1,33 +1,34 @@
 function Search({ search, onChangeSearch }) {
   return (
-    <div className="relative m-auto mb-4 flex w-full flex-wrap">
-      <div className="m-auto">
+    <div className="flex md:order-2">
+      <div className="relative hidden md:block">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+          <svg
+            className="w-4 h-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+          <span className="sr-only">Search icon</span>
+        </div>
         <input
-          id="search-input"
-          className="relative block w-96 rounded-lg border border-solid border-neutral-300 bg-transparent bg-clip-padding px-5 py-[0.65rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none"
           value={search}
           onChange={(e) => onChangeSearch(e.target.value)}
           name="search"
           type="search"
-          placeholder="Search by campaign name"
+          id="search-navbar"
+          className="w-80 p-2 pl-10 text-sm border rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search by campaign name..."
         />
-        <span
-          className="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700"
-          id="basic-addon2"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </span>
       </div>
     </div>
   );
